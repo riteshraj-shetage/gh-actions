@@ -11,3 +11,4 @@ def test_subtract():
     assert subtract(0, 0) == 0
     assert subtract(-1, -1) == 0
     assert subtract(-3, -2) == -1
+    assert subtract(10, 10) == 0
