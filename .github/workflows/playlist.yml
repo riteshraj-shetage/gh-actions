@@ -1,0 +1,50 @@
+name: Build Playlist
+
+on:
+  pull_request:
+    paths:
+      - "spotify-collabs/data/*.txt"
+  push:
+    paths:
+      - "spotify-collabs/data/*.txt"
+  workflow_dispatch:
+
+jobs:
+  build-playlist:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install axios
+
+      - name: Validate & Clean Links
+        run: node spotify-collabs/scripts/validate_links.js
+
+      - name: Build Gallery
+        run: node spotify-collabs/scripts/build_gallery.js
+
+      - name: Upload artifact (for Pages)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: spotify-collabs
+          
+  deploy:
+    needs: build-playlist
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
