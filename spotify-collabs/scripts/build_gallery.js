@@ -1,12 +1,20 @@
 const fs = require("fs");
+const path = require("path");
 const axios = require("axios");
 
-// Utility: read links from a file, clean them
+// Utility: read links from a file, clean + deduplicate
 function readLinks(file) {
-  return fs.readFileSync(file, "utf-8")
+  const fullPath = path.join(__dirname, "..", "data", file);
+  if (!fs.existsSync(fullPath)) {
+    console.error("Missing file:", fullPath);
+    return [];
+  }
+  const lines = fs.readFileSync(fullPath, "utf-8")
     .split("\n")
     .map(l => l.trim())
     .filter(l => l && l.startsWith("https://open.spotify.com/"));
+
+  return [...new Set(lines)]; // deduplicate
 }
 
 // Build a section (Tracks or Artists)
@@ -43,6 +51,7 @@ async function buildSection(file, title) {
         h1, h2 { margin-bottom: 1rem; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
         iframe { width: 100%; min-height: 152px; border: 0; }
+        .card { background: #f9f9f9; padding: 0.5rem; border-radius: 8px; }
         .error { color: #b00020; }
       </style>
     </head>
@@ -52,10 +61,11 @@ async function buildSection(file, title) {
   const foot = "</body></html>";
 
   let html = head;
-  html += await buildSection("spotify-collabs/data/tracks.txt", "Tracks");
-  html += await buildSection("spotify-collabs/data/artists.txt", "Artists");
-
+  html += await buildSection("tracks.txt", "Tracks");
+  html += await buildSection("artists.txt", "Artists");
   html += foot;
 
-  fs.writeFileSync("spotify-collabs/index.html", html);
+  const outPath = path.join(__dirname, "..", "index.html");
+  fs.writeFileSync(outPath, html);
+  console.log("Gallery built:", outPath);
 })();
