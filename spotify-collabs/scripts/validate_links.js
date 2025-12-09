@@ -26,8 +26,8 @@ function processFile(file) {
   return valid;
 }
 
-const trackValid = processFile("data/tracks.txt");
-const artistValid = processFile("data/artists.txt");
+const trackValid = processFile("spotify-collabs/data/tracks.txt");
+const artistValid = processFile("spotify-collabs/data/artists.txt");
 
 if (!trackValid || !artistValid) {
   process.exit(1); // fail workflow if invalid links found
