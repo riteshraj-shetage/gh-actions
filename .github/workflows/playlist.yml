@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: spotify-collabs
-          
+
   deploy:
     needs: build-playlist
     runs-on: ubuntu-latest
