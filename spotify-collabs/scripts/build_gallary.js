@@ -52,9 +52,10 @@ async function buildSection(file, title) {
   const foot = "</body></html>";
 
   let html = head;
-  html += await buildSection("experiments/spotify-collab-playlist/data/tracks.txt", "Tracks");
-  html += await buildSection("experiments/spotify-collab-playlist/data/artists.txt", "Artists");
+  html += await buildSection("data/tracks.txt", "Tracks");
+  html += await buildSection("data/artists.txt", "Artists");
+
   html += foot;
 
-  fs.writeFileSync("experiments/spotify-collab-playlist/gallery/index.html", html);
+  fs.writeFileSync("index.html", html);
 })();
