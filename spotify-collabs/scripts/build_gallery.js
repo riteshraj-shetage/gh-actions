@@ -47,14 +47,6 @@ async function buildSection(file, title) {
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="./styles.css">
       <title>Collaborative Playlist</title>
-      <style>
-        body { font-family: system-ui, sans-serif; margin: 2rem; }
-        h1, h2 { margin-bottom: 1rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
-        iframe { width: 100%; min-height: 152px; border: 0; }
-        .card { background: #f9f9f9; padding: 0.5rem; border-radius: 8px; }
-        .error { color: #b00020; }
-      </style>
     </head>
     <body>
       <h1>Collaborative Playlist Wall</h1>
