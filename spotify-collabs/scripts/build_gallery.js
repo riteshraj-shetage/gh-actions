@@ -51,7 +51,7 @@ async function buildSection(file, title) {
     <body>
       <h1>Collaborative Playlist Wall</h1>
   `;
-  const foot = "</body></html>";
+  const foot = "<script src="./script.js"></script></body></html>";
 
   let html = head;
   html += await buildSection("tracks.txt", "Tracks");
