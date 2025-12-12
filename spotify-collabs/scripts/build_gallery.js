@@ -46,10 +46,10 @@ async function buildSection(file, title) {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="styles.css">
-      <title>Collaborative Playlist</title>
+      <title>Spotify Embed Gallary</title>
     </head>
     <body>
-      <h1>Collaborative Playlist Wall</h1>
+      <h1>Spotify Embed Gallary</h1>
   `;
   const foot = '<script src="scripts/one_play.js"></script></body></html>';
 
