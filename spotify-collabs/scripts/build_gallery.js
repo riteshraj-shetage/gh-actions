@@ -45,13 +45,13 @@ async function buildSection(file, title) {
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="../styles.css">
+      <link rel="stylesheet" href="styles.css">
       <title>Collaborative Playlist</title>
     </head>
     <body>
       <h1>Collaborative Playlist Wall</h1>
   `;
-  const foot = '<script src="./one_play.js"></script></body></html>';
+  const foot = '<script src="/scripts/one_play.js"></script></body></html>';
 
   let html = head;
   html += await buildSection("tracks.txt", "Tracks");
