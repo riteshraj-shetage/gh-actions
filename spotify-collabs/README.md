@@ -1,6 +1,6 @@
-# 🎶 Collaborative Playlist (CI/CD Experiment)
+# 🎶 Spotify Embed Gallary (CI/CD Experiment)
 
-This project is a **community playlist wall** powered by GitHub Actions and Spotify’s oEmbed API.  
+This project is a **Spotify Embed Gallery** powered by GitHub Actions and Spotify’s oEmbed API.  
 Contributors can add their favorite **tracks** or **artists**, and the site will automatically update with playable Spotify embeds.
 
 ---
